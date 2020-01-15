@@ -57,10 +57,10 @@ app.get("/admin-view-users", function(req, res) {
   });
 });
 
+const token = req.cookies.auth;
+
 app.get("/user-questions", verifyToken, function(req, res) {
   app.use(function(req, res, next) {
-    var token = req.cookies.auth;
-
     // decode token
     if (token) {
       jwt.verify(token, "secret", function(err, token_data) {
@@ -204,7 +204,7 @@ app.post("/login", async (req, response) => {
       console.info("/login: login successful..");
       console.log(req.body);
 
-      var token = jwt.sign(
+      token = jwt.sign(
         { Email },
         "secretkey",
         { expiresIn: "30s" },
