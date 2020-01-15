@@ -3,23 +3,14 @@ import logo from '../codestone logo.png';
 import {Link } from 'react-router-dom'
 import '../bootstrap.min.css'
 import {Button} from 'react'
-
+import  DisplayQuestions  from "./DisplayQuestions";
 
 function Home() {
   return (
     
       <div> 
-        <Header/>
-        <QuestionForm/>
-        <QuestionForm/>
-        <QuestionForm/>
-        <QuestionForm/>
-
-        
-        <button > Save</button>
-        
-     
-   
+        <Header/>  
+        <DisplayQuestions/>
 
   </div>
     

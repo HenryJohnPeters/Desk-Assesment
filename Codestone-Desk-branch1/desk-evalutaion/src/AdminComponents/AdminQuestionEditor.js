@@ -10,6 +10,7 @@ function Home() {
     
       <div> 
         <Header/>
+        <SeveritySearch/>
      
      
    <p>admin question editor </p>
@@ -30,7 +31,7 @@ function Header(){
       <img className='profile-image' alt='icon' src={logo} width="340" height="60"/>
   
       
-      <LoginForm/>
+      <Navigation/>
     </div>
   
     
@@ -38,17 +39,28 @@ function Header(){
       )
     }
   
-  function LoginForm (){
+  function Navigation (){
   return(
     <div>
       <br/>
  <Link to= '/home'><button type="button" class="btn btn-light">Home</button></Link>
  <Link to= '/admin-view-users'><button type="button" class="btn btn-light">View Users(Admin)</button></Link>
 
- 
   </div>
   )
 }
+
+function SeveritySearch (){
+  return(
+    <div>
+      <br/>
+ <Link to= '/home'><button type="button" class="btn btn-light">Home</button></Link>
+ <Link to= '/admin-view-users'><button type="button" class="btn btn-light">View Users(Admin)</button></Link>
+
+  </div>
+  )
+}
+
 
 
 

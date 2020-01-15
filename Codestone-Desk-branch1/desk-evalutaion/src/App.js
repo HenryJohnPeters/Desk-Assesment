@@ -13,6 +13,10 @@ import  History  from "./Components/History";
 
 import  AdminCenter  from "./AdminComponents/AdminCenter";
 import  AdminQuestionEditor  from "./AdminComponents/AdminQuestionEditor";
+
+import  AdminViewUsersSeverityHigh  from "./AdminComponents/AdminViewUsersSeverityHigh";
+import  AdminViewUsersSeverityMedium  from "./AdminComponents/AdminViewUsersSeverityMedium";
+import  AdminViewUsersSeverityCompleted  from "./AdminComponents/AdminViewUsersSeverityCompleted";
 import  AdminViewUsers  from "./AdminComponents/AdminViewUsers";
 
 
@@ -49,10 +53,16 @@ function Routing (){
 
       <Route   exact path= '/admin-center' exact component = {AdminCenter}/>
 
-      <Route   exact path= '/admin-center' exact component = {AdminCenter}/>
-      <Route   exact path= '/admin-view-users' exact component = {AdminViewUsers}/>
+      
+      
       <Route   exact path= '/admin-question-editor' exact component = {AdminQuestionEditor}/>
 
+
+      <Route   exact path= '/admin-view-users' exact component = {AdminViewUsers}/>
+       <Route   exact path= '/admin-view-users-severity-high' exact component = {AdminViewUsersSeverityHigh}/> 
+      <Route   exact path= '/admin-view-users-severity-medium' exact component = {AdminViewUsersSeverityMedium}/>
+      <Route   exact path= '/admin-view-users-severity-completed' exact component = {AdminViewUsersSeverityCompleted}/> <Route   exact path= '/admin-view-users' exact component = {AdminViewUsers}/>
+      
 </Switch>
       <ul>
           <li><Link to='/home'>Home</Link></li>
