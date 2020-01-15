@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach Server",
+      "restart": true,
+      "port": 5000
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Client",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}\\Codestone-Desk-branch1\\",
+      "sourceMaps": true
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Attach Client+Server",
+      "configurations": ["Attach Server", "Launch Client"]
+    }
+  ]
+}
