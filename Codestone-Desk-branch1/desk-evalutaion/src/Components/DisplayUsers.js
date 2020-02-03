@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React from "react";
+=======
+import React, { Component } from "react";
+>>>>>>> 18183b340cb0f9aa27d295839e20a891ab449ff8
 import "./customers.css";
 
 class DisplayUsers extends React.Component {
