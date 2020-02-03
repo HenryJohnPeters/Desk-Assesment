@@ -1,0 +1,33 @@
+{
+  "name": "codestone-desk-branch1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "autosize": "^4.0.2",
+    "body-parser": "^1.19.0",
+    "concurrently": "^5.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "http": "^0.0.0",
+    "localstorage": "^1.0.1",
+    "mssql": "^6.0.1",
+    "node": "^13.5.0",
+    "nodemailer": "^6.4.2",
+    "nodemon": "^2.0.2",
+    "path": "^0.12.7",
+    "react-modal": "^3.11.1",
+    "react-router-dom": "^5.1.2",
+    "reactjs-popup": "^1.5.0",
+    "tedious": "^6.6.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js",
+    "client": "npm start --prefix desk-evalutaion",
+    "dev": "concurrently \"npm run start\" \"npm run client\""
+  },
+  "author": "",
+  "license": "ISC"
+}
