@@ -1,63 +1,48 @@
-import React from 'react';
-import logo from '../codestone logo.png';
-import {Link } from 'react-router-dom'
-import '../bootstrap.min.css'
-import {Button} from 'react'
-
+import React from "react";
+import logo from "../codestone logo.png";
+import { Link } from "react-router-dom";
+import "../bootstrap.min.css";
 
 function Home() {
   return (
-    
-      <div> 
-        <Header/>
-     
-     
-   <p>History of users  </p>
+    <div>
+      <Header />
 
-  </div>
-    
+      <p>History of users </p>
+    </div>
   );
 }
 
-
-
-function Header(){
+function Header() {
   return (
-
     <div class="jumbotron">
-      <div className = "User-Menu">
-    <Link>User details  </Link>
+      <div className="User-Menu">
+        <Link>User details </Link>
+      </div>
+      <img
+        className="profile-image"
+        alt="icon"
+        src={logo}
+        width="340"
+        height="60"
+      />
+
+      <LoginForm />
     </div>
-    <img className='profile-image' alt='icon' src={logo} width="340" height="60"/>
-
-    
-    <LoginForm/>
-  </div>
-
-  
-  
-    )
-  }
-
-
-  function LoginForm (){
-  return(
-    <div>
-      <br/>
-      <Link to= '/home'><button type="button" class="btn btn-light">Home</button></Link>
- 
- 
-
- 
-  </div>
-  )
+  );
 }
 
+function LoginForm() {
+  return (
+    <div>
+      <br />
+      <Link to="/home">
+        <button type="button" class="btn btn-light">
+          Home
+        </button>
+      </Link>
+    </div>
+  );
+}
 
-
-
-
-
-  
-  
-  export default Home;
+export default Home;

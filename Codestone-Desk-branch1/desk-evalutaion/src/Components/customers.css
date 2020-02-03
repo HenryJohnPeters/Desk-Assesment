@@ -1,16 +1,16 @@
 ul {
-  padding:0;
-  list-style:none;
+  padding: 0;
+  list-style: none;
   width: 80%;
-  margin:auto;
+  margin: auto;
 }
 
-li{
-  font-size:1.2rem;
+li {
+  font-size: 1.2rem;
   line-height: 2rem;
   border-bottom: 1px dotted #777;
 }
 
-right{
- margin-right: 0vmax;
+right {
+  margin-right: 0vmax;
 }
