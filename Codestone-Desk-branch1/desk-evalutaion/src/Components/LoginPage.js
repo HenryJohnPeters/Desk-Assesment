@@ -40,21 +40,16 @@ class Login extends React.Component {
 
       fetch("/login", {
         method: "POST", // or 'PUT'
+        // request.headers['authorization'] = 'Bearer ' + token;,
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json"
         },
         body: JSON.stringify(data)
       })
-        // .then(response => response.json())
         .then(data => {
           console.log("Success:", data);
 
-          // if ( ) {
-          //   console.log("nice");
-          // } else {
-          //   console.log("not nice");
-          // }
           // window.location.href = "/home";
         })
 

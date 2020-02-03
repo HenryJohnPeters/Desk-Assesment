@@ -8,6 +8,7 @@ var session = require("express-session");
 const jwt = require("jsonwebtoken");
 
 var path = require("path");
+var cookieParser = require("cookie-parser");
 
 var config = {
   user: "sa",
@@ -15,28 +16,9 @@ var config = {
   server: "WIN10-LAP-HJP", // You can use 'localhost\\instance' to connect to named instance
   database: "CDA"
 };
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 
-// app.use(function(req, res, next) {
-//   var token = req.cookies.auth;
-
-//   // decode token
-//   if (token) {
-//     jwt.verify(token, "secret", function(err, token_data) {
-//       if (err) {
-//         return res.status(403).send("Error");
-//       } else {
-//         req.user_data = token_data;
-//         next();
-//       }
-//     });
-//   } else {
-//     return res.status(403).send("No token");
-//   }
-// });
-
-//AdminView users just pulls the users from the database
 app.get("/admin-view-users", function(req, res) {
   // connect to your database
   sql.connect(config, function(err) {
@@ -57,12 +39,15 @@ app.get("/admin-view-users", function(req, res) {
   });
 });
 
-const token = req.cookies.auth;
-
 app.get("/user-questions", verifyToken, function(req, res) {
   app.use(function(req, res, next) {
+    var token = req.cookies.auth;
+
+    console.log(bearerToken + "before if");
     // decode token
     if (token) {
+      console.log(bearerToken);
+
       jwt.verify(token, "secret", function(err, token_data) {
         if (err) {
           console.info("token did not work");
@@ -133,9 +118,6 @@ app.post("/admin-Add-Users", async (req, response) => {
   });
 });
 
-///SELECT * from  RegisteredUsers where  Email = @email  AND PasswordHash = HASHBYTES('SHA2_512', @password + 'skrrt')
-
-//AdminView users just pulls the users from the database
 app.post("/admin-Add-Users", async (req, response) => {
   sql.connect(config, function(err) {
     try {
@@ -201,19 +183,20 @@ app.post("/login", async (req, response) => {
     const result = await request.query(queryString);
 
     if (result.recordsets[0].length > 0) {
-      console.info("/login: login successful..");
-      console.log(req.body);
-
-      token = jwt.sign(
+      console.info("correct details");
+      var token = jwt.sign(
         { Email },
-        "secretkey",
+        "secret",
         { expiresIn: "30s" },
         (err, token) => {
           res.json({
             token
           });
+
           res.cookie("auth", token);
           res.send("ok");
+
+          console.log(req.body);
         }
       );
     } else {
@@ -232,7 +215,13 @@ app.post("/login", async (req, response) => {
 // Verify Token
 function verifyToken(req, res, next) {
   // Get auth header value
-  const bearerHeader = req.headers["authorization"];
+
+  console.log("Header cookies: ", JSON.stringify(req.headers.cookie));
+
+  const bearerHeader = req.cookies["auth"];
+
+  console.log(bearerHeader);
+
   // Check if bearer is undefined
   if (typeof bearerHeader !== "undefined") {
     // Split at the space
